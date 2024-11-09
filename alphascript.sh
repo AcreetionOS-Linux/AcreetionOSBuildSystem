@@ -2,8 +2,6 @@ variable1=(alsa-utils linux-firmware arch-install-scripts dracut archiso b43-fwc
 input=$variable1
 deplist=sudo pacman -Qi $input | grep -i "Depends On" |  cut -d':' -f2 | sed 's/ /\ /g'
 
-## Testing upate
-
 for input in "${variable1[@]}" ; do
   echo "$input already exists. Recreating Directory, pulling, and building $input" ;
   sudo pacman -Syy $deplist --noconfirm ;
